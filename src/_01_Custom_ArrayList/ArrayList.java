@@ -1,13 +1,17 @@
 package _01_Custom_ArrayList;
 
+import java.sql.Array;
+
 @SuppressWarnings("unchecked")
 
 public class ArrayList <T>{
+	private T[] tfue;
+	
 	
 	public ArrayList() {
-		
+		tfue = new T[0];
 	}
-	ArrayList<T> tseries = new ArrayList<T>();
+	
 	public T get(int loc) throws IndexOutOfBoundsException {
 		
 		return null;
@@ -29,8 +33,7 @@ public class ArrayList <T>{
 		
 	}
 	
-	public boolean contains(T val) {
-		
+	public boolean contains(T val) {️️
 		return false;
 	}
 }
