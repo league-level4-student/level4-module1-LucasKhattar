@@ -5,8 +5,9 @@ package _01_Custom_ArrayList;
 public class ArrayList <T>{
 	
 	public ArrayList() {
+		
 	}
-	
+	ArrayList<T> tseries = new ArrayList<T>();
 	public T get(int loc) throws IndexOutOfBoundsException {
 		
 		return null;
