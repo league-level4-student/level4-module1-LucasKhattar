@@ -14,7 +14,7 @@ public class goatCarSimulator implements ActionListener {
 		gcs.Runner();
 	}
 
-	JFrame frame = new JFrame();
+	JFrame doors = new JFrame();
 	JPanel panel = new JPanel();
 	JButton door1 = new JButton();
 	JButton door2 = new JButton();
@@ -22,15 +22,15 @@ public class goatCarSimulator implements ActionListener {
 	Random rand = new Random();
 
 	void Runner() {
-		frame.add(panel);
+		doors.add(panel);
 		panel.add(door1);
 		panel.add(door2);
 		panel.add(door3);
 		door1.addActionListener(this);
 		door2.addActionListener(this);
 		door3.addActionListener(this);
-		frame.setVisible(true);
-		frame.pack();
+		doors.setVisible(true);
+		doors.pack();
 	}
 
 	int num = rand.nextInt(3);
@@ -38,14 +38,16 @@ public class goatCarSimulator implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		Random rand2 = new Random();
+		rand2.nextInt(2);
 		if (e.getSource().equals(door1)) {
 			
 		}
-		
+
 		else if (e.getSource().equals(door2)) {
 
 		}
-		
+
 		else if (e.getSource().equals(door3)) {
 
 		}
