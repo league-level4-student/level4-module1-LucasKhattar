@@ -1,5 +1,6 @@
-00000package _01_Custom_ArrayList;
+package _01_Custom_ArrayList;
 
+import java.awt.List;
 import java.sql.Array;
 
 @SuppressWarnings("unchecked")
@@ -9,7 +10,7 @@ public class ArrayList <T>{
 	
 	
 	public ArrayList() {
-		tfue = new T[0];
+		tfue = (T[])new Object[0];
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
