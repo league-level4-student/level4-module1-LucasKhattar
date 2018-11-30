@@ -19,7 +19,12 @@ public class ArrayList <T>{
 	}
 	
 	public void add(T val) {
-		
+		T[] newer = (T[])new Object[tfue.length+1];
+		newer[newer.length] = val;
+	for (int i = 0; i < tfue.length; i++) {
+		newer[i] = tfue[i];
+	}
+	tfue[] = newer[];
 	}
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
@@ -34,7 +39,7 @@ public class ArrayList <T>{
 		
 	}
 	
-	public boolean contains(T val) {️️
+	public boolean contains(T val) {
 		return false;
 	}
 }
