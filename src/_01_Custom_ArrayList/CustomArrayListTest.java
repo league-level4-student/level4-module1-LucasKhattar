@@ -65,7 +65,7 @@ public class CustomArrayListTest {
 		list.add(new Student("Sara"));
 		list.add(new Student("Kamara"));
 		list.add(new Student("Devaugn"));
-		
+		System.out.println(list.get(2));
 		list.remove(0);
 		
 		if(!list.get(0).name.equals("Sara")) {
@@ -77,7 +77,6 @@ public class CustomArrayListTest {
 		if(!list.get(2).name.equals("Devaugn")) {
 			fail("list.get(2) returning improper value.");
 		}
-		
 		list.remove(2);
 		if(!list.get(0).name.equals("Sara")) {
 			fail("list.get(0) returning improper value.");
