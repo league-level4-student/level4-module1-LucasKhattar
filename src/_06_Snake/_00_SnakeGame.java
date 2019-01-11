@@ -10,9 +10,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 // Go through the methods and complete the steps in this class
@@ -162,10 +164,17 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//*2. tell the user their snake is dead
 		JOptionPane.showMessageDialog(null, "Your Snake Died!");
 		//3. ask them if they want to play again.
-		
+	String awnser = JOptionPane.showInputDialog("Want To Play Again?");
 		//4. if they want to play again
+	if(awnser.toLowerCase().equals("yes")) {
 		//   reset the snake and the food and start the timer
-		//   else, exit the game
+		snake.reset(null);
+		timer.restart();
+	}
+	//  else, exit the game
+	else {	
+		System.exit(0);
+	}
 		
 	}
 
@@ -177,13 +186,18 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//1. update the snake
-
+		snake.update();
 		//2. if the snake is colliding with its own body 
 		//   or if the snake is out of bounds, call gameOver
-
+		if(snake.isHeadCollidingWithBody()||snake.isOutOfBounds()) {
+			gameOver();
+		}
 		//3. if the location of the head is equal to the location of the food,
 		// 	 feed the snake and set the food location
-
+		if(snake.getHeadLocation()==foodLocation) {
+			snake.feed();
+		}
 		//4. call panel.repaint();
+		panel.repaint();
 	}
 }
