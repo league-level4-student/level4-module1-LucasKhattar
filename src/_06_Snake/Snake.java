@@ -24,70 +24,94 @@ public class Snake {
 	}
 
 	public void feed() {
-		//1. add a new SnakeSegment object to the snake
+		// 1. add a new SnakeSegment object to the snake
 		snake.add(new SnakeSegment(snake.get(0).getLocation(), BODY_SIZE));
 	}
 
 	public Location getHeadLocation() {
-		//2. return the location of the snake's head
+		// 2. return the location of the snake's head
 		return head.getLocation();
 	}
 
 	public void update() {
-		//1. use a switch statement to check on the currentDirection
-		//   of the snake and calculate its next x and y position.
-		switch currentDirection{
-			case Direction.UP:
-			
-				break;
+		// 1. use a switch statement to check on the currentDirection
+		// of the snake and calculate its next x and y position.
+		int x = head.getLocation().x;
+		int y = head.getLocation().y;
+		switch (currentDirection) {
+		case UP:
+			y -= 1;
+			break;
+		case DOWN:
+			y += 1;
+			break;
+		case RIGHT:
+			x += 1;
+			break;
+		case LEFT:
+			x -= 1;
+			break;
 		}
 
-		//2. Iterate through the SnakeSegments in reverse order
-		//2a. Update each snake segment to the location of the segment 
-		//    in front of it.
-		
-		
-		//3. set the location of the head to the new location calculated in step 1
-		
+		// 2. Iterate through the SnakeSegments in reverse order
+		// 2a. Update each snake segment to the location of the segment
+		// in front of it.
+		for (int i = snake.size() - 1; i > 0; i--) {
+			SnakeSegment s = snake.get(i);
+			SnakeSegment t = snake.get(i - 1);
+			s.getLocation().x = t.getLocation().x;
+			s.getLocation().y = t.getLocation().y;
+		}
+		// 3. set the location of the head to the new location calculated in step 1
+		Location updatedlLoc = new Location(x, y);
+		head.setLocation(updatedlLoc);
 
-		//4. set canMove to true
+		// 4. set canMove to true
 		canMove = true;
 	}
 
 	public void setDirection(Direction d) {
-		//1. set the current direction equal to the passed in Direction only if canMove is true.
-		//   set canMove equal to false.
-		//   make sure the snake cannot completely reverse directions.
-		
+		// 1. set the current direction equal to the passed in Direction only if canMove
+		// is true.
+		if (canMove == true) {
+			currentDirection = d;
+			// set canMove equal to false.
+			canMove = false;
+			// make sure the snake cannot completely reverse directions.
+		}
+
 	}
 
 	public void reset(Location loc) {
-		//1. clear the snake
+		// 1. clear the snake
 		snake.clear();
-		//2. set the location of the head
+		// 2. set the location of the head
 		head.setLocation(loc);
-		//3. add the head to the snake
+		// 3. add the head to the snake
 		snake.add(head);
 	}
 
 	public boolean isOutOfBounds() {
-		//1. complete the method so it returns true if the head of the snake is outsize of the window
-		//   and false otherwise
-		
+		// 1. complete the method so it returns true if the head of the snake is outside
+		// of the window
+		if(head.getLocation().x<0||head.getLocation().x>750||head.getLocation().y<0||head.getLocation().y>600) {
+			return true;
+		}
+		// and false otherwise
 		return false;
 	}
-	
+
 	public boolean isHeadCollidingWithBody() {
-		//1. complete the method so it returns true if the head is located
-		//   in the same location as any other body segment
-		
+		// 1. complete the method so it returns true if the head is located
+		// in the same location as any other body segment
+
 		return false;
 	}
 
 	public boolean isLocationOnSnake(Location loc) {
-		//1. complete the method so it returns true if the passed in
-		//   location is located on the snake
-		
+		// 1. complete the method so it returns true if the passed in
+		// location is located on the snake
+
 		return false;
 	}
 
