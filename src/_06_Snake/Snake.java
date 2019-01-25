@@ -74,7 +74,24 @@ public class Snake {
 		// 1. set the current direction equal to the passed in Direction only if canMove
 		// is true.
 		if (canMove == true) {
-			currentDirection = d;
+			if (currentDirection.equals(Direction.UP) && d.equals(Direction.DOWN)) {
+				setDirection(Direction.UP);
+			}
+
+			else if (currentDirection.equals(Direction.DOWN) && d.equals(Direction.UP)) {
+				setDirection(Direction.DOWN);
+			}
+
+			else if (currentDirection.equals(Direction.LEFT) && d.equals(Direction.RIGHT)) {
+				setDirection(Direction.LEFT);
+			}
+			
+			else if (currentDirection.equals(Direction.RIGHT)&&d.equals(Direction.LEFT)) {
+				setDirection(Direction.RIGHT);
+			}
+			else {				
+				currentDirection = d;
+			}
 			// set canMove equal to false.
 			canMove = false;
 			// make sure the snake cannot completely reverse directions.
@@ -94,7 +111,8 @@ public class Snake {
 	public boolean isOutOfBounds() {
 		// 1. complete the method so it returns true if the head of the snake is outside
 		// of the window
-		if(head.getLocation().x<0||head.getLocation().x>750||head.getLocation().y<0||head.getLocation().y>600) {
+		if (head.getLocation().x < 0 || head.getLocation().x > _00_SnakeGame.WIDTH - 1 || head.getLocation().y < 0
+				|| head.getLocation().y > _00_SnakeGame.HEIGHT - 1) {
 			return true;
 		}
 		// and false otherwise
@@ -104,14 +122,24 @@ public class Snake {
 	public boolean isHeadCollidingWithBody() {
 		// 1. complete the method so it returns true if the head is located
 		// in the same location as any other body segment
-
+		for (int i = snake.size() - 1; i > 0; i--) {
+			SnakeSegment collision = snake.get(i);
+			if (collision.getLocation() == head.getLocation()) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	public boolean isLocationOnSnake(Location loc) {
 		// 1. complete the method so it returns true if the passed in
 		// location is located on the snake
-
+		for (int i = snake.size() - 1; i > 0; i--) {
+			SnakeSegment foodCheck = snake.get(i);
+			if (foodCheck.getLocation() == loc) {
+				return true;
+			}
+		}
 		return false;
 	}
 

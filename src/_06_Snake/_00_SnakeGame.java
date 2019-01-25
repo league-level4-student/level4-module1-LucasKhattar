@@ -109,7 +109,6 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		//nothin here (*_*)
 	}
 
 	@Override
@@ -121,28 +120,29 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// direction accordingly
 		case KeyEvent.VK_UP:
 			snake.setDirection(Direction.UP);
-			System.out.println("Up");
+			//System.out.println("Up");
 			break;	
 		
 		case KeyEvent.VK_DOWN:
 			snake.setDirection(Direction.DOWN);
-			System.out.println("Down");
+			//System.out.println("Down");
 			break;	
 	
 		case KeyEvent.VK_RIGHT:
 			snake.setDirection(Direction.RIGHT);
-			System.out.println("Right");
+			//System.out.println("Right");
 			break;		
 
 		case KeyEvent.VK_LEFT:
 			snake.setDirection(Direction.LEFT);
-			System.out.println("Left");
+			//System.out.println("Left");
 			break;
 		
 		// if the space key is pressed, call the snake's feed method
 		case KeyEvent.VK_SPACE:
 			snake.feed();
-			System.out.println("Space");
+			snake.update();
+			//System.out.println("Space");
 			break;
 		}
 	}
