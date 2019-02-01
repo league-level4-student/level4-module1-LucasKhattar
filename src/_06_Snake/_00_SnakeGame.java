@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -141,7 +142,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// if the space key is pressed, call the snake's feed method
 		case KeyEvent.VK_SPACE:
 			snake.feed();
-			snake.update();
+			//snake.update();
 			//System.out.println("Space");
 			break;
 		}
@@ -164,20 +165,28 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//*2. tell the user their snake is dead
 		JOptionPane.showMessageDialog(null, "Your Snake Died!");
 		//3. ask them if they want to play again.
-	String awnser = JOptionPane.showInputDialog("Want To Play Again?");
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JTextField textField = new JTextField();
+		JButton yes = new JButton();
+		JButton no = new JButton();
+		frame.add(panel);
+		panel.add(textField);
+		textField.setText("Want to play again?");
+		textField.setEditable(false);
+		panel.add(no);
+		no.setText("NO");
+		panel.add(yes);
+		yes.setText("YES");
+		frame.pack();
+		frame.setVisible(true);
+		yes.addActionListener(this);
+		no.addActionListener(this);
 		//4. if they want to play again
-	if(awnser.toLowerCase().equals("yes")) {
 		//   reset the snake and the food and start the timer
-		Random rand = new Random();
-		Location restart = new Location(8*WINDOW_SCALE, 6*WINDOW_SCALE);
-		snake.reset(restart);
-		snake.update();
-		timer.restart();
-	}
+	
 	//  else, exit the game
-	else {	
-		System.exit(0);
-	}
+	
 		
 	}
 

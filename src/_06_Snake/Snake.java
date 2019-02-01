@@ -59,8 +59,7 @@ public class Snake {
 		for (int i = snake.size() - 1; i > 0; i--) {
 			SnakeSegment s = snake.get(i);
 			SnakeSegment t = snake.get(i - 1);
-			s.getLocation().x = t.getLocation().x;
-			s.getLocation().y = t.getLocation().y;
+			s.setLocation(t.getLocation());
 		}
 		// 3. set the location of the head to the new location calculated in step 1
 		Location updatedlLoc = new Location(x, y);
@@ -124,7 +123,7 @@ public class Snake {
 		// in the same location as any other body segment
 		for (int i = snake.size() - 1; i > 0; i--) {
 			SnakeSegment collision = snake.get(i);
-			if (collision.getLocation() == head.getLocation()) {
+			if (collision.getLocation().equals(getHeadLocation())) {
 				return true;
 			}
 		}
